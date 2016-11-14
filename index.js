@@ -9000,3 +9000,62 @@ const issues = [
     "url": "https://api.github.com/repos/learn-co-curriculum/js-donut-lab/issues/2"
   }
 ];
+
+
+// var issuesWithUpdatedApiUrl = issues.map(function(issue){
+//   return Object.assign({}, issue, {
+//     url: issue['url'].replace("api.github.com","api-v2.github.com")
+//   })
+// })
+
+// // var collectCounts = issues.map(function (issue) {
+// //   var counts = issue.comments_count
+// //   return counts })
+// //
+// // var commentCountAcrossIssues = collectCounts.reduce(function(a,b){return a + b}, 0)
+
+// var commentCountAcrossIssues = issues.map(issue => issue.comments_count).reduce((total, count) => total + count, 0)
+
+// var openIssues = []
+
+// issues.forEach(function (issue) {
+//   if (issue.state === 'open'){
+//     openIssues.push(issue)
+//   } 
+// })
+
+// var nonAutomaticIssues = []
+
+// issues.forEach(function(issue){
+//   if (!issue.body === 'This pull request has been automatically created by learn.co.'){
+//     nonAutomaticIssues.push(issue)
+//   }
+
+
+var issuesWithUpdatedApiUrl = issues.map(function (issue){
+  return Object.assign({}, issue, {
+    url: issue['url'].replace("api.github.com", "api-v2.github.com")
+  })
+
+})
+
+// var collectCounts = issues.map(function (issue) {
+//   var counts = issue.comments_count
+//   return counts })
+//
+// var commentCountAcrossIssues = collectCounts.reduce(function(a,b){return a + b}, 0)
+var commentCountAcrossIssues = issues.map(issue => issue.comments_count).reduce((total, count) => total + count, 0)
+
+
+var openIssues = []
+issues.forEach(function (issue) {
+  if (issue.state === 'open'){
+    openIssues.push(issue)
+  }
+})
+var nonAutomaticIssues = []
+issues.forEach(function(issue){
+  if (!issue.body === 'This pull request has been automatically created by learn.co.'){
+    nonAutomaticIssues.push(issue)
+  }
+})
